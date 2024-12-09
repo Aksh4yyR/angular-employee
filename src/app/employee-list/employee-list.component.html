@@ -1,0 +1,49 @@
+<div class="employee-list-container">
+    <h2>Employee List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Contact No</th>
+          <th>Email</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.contact }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.address }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="openAddModal()">Add Employee</button>
+  
+    <mat-dialog-content>
+      <div *ngIf="showAddModal">
+        <h2>Add Employee</h2>
+        <form (ngSubmit)="addEmployee()">
+          <div>
+            <label>Employee Name</label>
+            <input [(ngModel)]="newEmployee.name" name="name" required />
+          </div>
+          <div>
+            <label>Contact No</label>
+            <input [(ngModel)]="newEmployee.contact" name="contact" required />
+          </div>
+          <div>
+            <label>Email</label>
+            <input [(ngModel)]="newEmployee.email" name="email" required />
+          </div>
+          <div>
+            <label>Address</label>
+            <input [(ngModel)]="newEmployee.address" name="address" required />
+          </div>
+          <button type="submit">Submit</button>
+          <button type="button" (click)="closeAddModal()">Cancel</button>
+        </form>
+      </div>
+    </mat-dialog-content>
+  </div>
+  
